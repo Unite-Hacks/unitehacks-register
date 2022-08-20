@@ -1,5 +1,5 @@
 # Register
-This is the registration form that was used for [Assemble!](https://github.com/hackclub/assemble)
+This is the registration form that was used for [Unite Hacks!](https://github.com/Unite-Hacks/unitehacks-register.git)
 
 ## Setup
 
