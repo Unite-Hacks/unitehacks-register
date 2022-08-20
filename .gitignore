@@ -1,0 +1,6 @@
+.now
+.next
+node_modules
+.DS_Store
+.env
+.vscode

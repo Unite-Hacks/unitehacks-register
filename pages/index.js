@@ -22,9 +22,11 @@ import nookies from 'nookies'
 import { useRouter } from 'next/router'
 import { toast, ToastContainer } from 'react-nextjs-toast'
 
+console.log(requiredList)
+
 export default function Register({ notFound, registrationRecord, params }) {
   const [data, setData] = useState({})
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(false)
 
   let keys = manifest.questions.flatMap(x => x.items.map(y => y.key))
 
@@ -59,16 +61,18 @@ export default function Register({ notFound, registrationRecord, params }) {
               }}
               as="div"
             >
-              Join The Waitlist For{' '}
+              Join us for{' '}
               <Text
                 sx={{
                   textDecoration: 'none',
                   color: 'blue',
                   cursor: 'pointer'
                 }}
-                onClick={() => window.open('https://www.unitehacks.com/')}
+                onClick={() =>
+                  window.open('https://www.unitehacks.com/', '_blank')
+                }
               >
-                Unite Hacks
+                Unite Hacks!
               </Text>
               !
             </Text>
@@ -95,7 +99,10 @@ export default function Register({ notFound, registrationRecord, params }) {
           return (
             <Box
               key={sectionIndex}
-              sx={{ mb: sectionIndex == manifest.questions.length -1 ? 4 : 5, mt: sectionIndex == 0 ? 4 : 5 }}
+              sx={{
+                mb: sectionIndex == manifest.questions.length - 1 ? 4 : 5,
+                mt: sectionIndex == 0 ? 4 : 5
+              }}
             >
               <Box sx={{ textAlign: 'left', mb: 2 }}>
                 <Text sx={{ color: 'red', fontSize: '27px', fontWeight: 800 }}>
@@ -172,6 +179,8 @@ export default function Register({ notFound, registrationRecord, params }) {
                             ? Textarea
                             : item.inputType == 'checkbox'
                             ? Input
+                            : item.inputType == 'number'
+                            ? Input
                             : Select
                         }
                         type={item.inputType}
@@ -233,8 +242,11 @@ export default function Register({ notFound, registrationRecord, params }) {
         })}
         <Button
           onClick={() => {
-            setDisabled(true);
-            toast.notify('Submitting your registration...', { duration: 60, title: 'Working...' })
+            setDisabled(true)
+            toast.notify('Submitting your registration...', {
+              duration: 60,
+              title: 'Working...'
+            })
             console.log(data)
             fetch('/api/submit', {
               method: 'POST',
@@ -244,20 +256,42 @@ export default function Register({ notFound, registrationRecord, params }) {
               body: JSON.stringify(data)
             })
               .then(response => response.json())
-              .then(
-                ({ success, error }) => {
-                  setDisabled(false);
-                  success ? window.location.replace('/success') : toast.notify(error, { type: 'error', title: 'Oops!', duration: 60 })
-                }
-              )
+              .then(({ success, error }) => {
+                setDisabled(false)
+                success
+                  ? window.location.replace('/success')
+                  : toast.notify(error, {
+                      type: 'error',
+                      title: 'Oops!',
+                      duration: 60
+                    })
+              })
           }}
           style={{
-            filter: true ? 'grayscale(1)' : 'grayscale(0)',
+            filter: disabled ? 'grayscale(1)' : 'grayscale(0)'
           }}
-          disabled={true}
+          disabled={disabled}
         >
           Submit
         </Button>
+      </Card>
+      <Card px={[4, 4]} py={[4, 4]} mt={4}>
+        <Box>
+          <Text sx={{ fontSize: '16px' }}>
+            Special thanks to Hack Club for{' '}
+            <Text
+              as={'a'}
+              href="https://github.com/hackclub/assemble"
+              target="_blank"
+              sx={{ color: 'black !important' }}
+            >
+              open sourcing
+            </Text>{' '}
+            their registration website.
+            <br></br>
+            Background credits to Sahana 2022
+          </Text>
+        </Box>
       </Card>
     </Container>
   )

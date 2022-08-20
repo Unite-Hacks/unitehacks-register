@@ -17,10 +17,10 @@ export default class App extends NextApp {
       <ThemeProvider theme={theme}>
         <Meta
           as={Head}
-          name="Join Us At Unite Hacks!" // site name
-          title="Join Us At Unite Hacks!" // page title
+          name="Unite Hacks" // site name
+          title="Unite Hacks" // page title
           description="" // page description
-          image="https://cloud-bs04w09ot-hack-club-bot.vercel.app/0image.png" // large summary card image URL
+          // large summary card image URL
           color="#ec3750" // theme color
         />
         <Flag />
@@ -43,13 +43,14 @@ export default class App extends NextApp {
               zIndex: 1,
               height: '100vh',
               width: '100vw',
-              backgroundImage: 'url("/msw-bg.png")',
+              backgroundImage: 'url("https://cdn.discordapp.com/attachments/1010026679202218064/1010441334554902558/Background_-_2bg.png")',
               backgroundSize: 'cover',
               backgroundPosition: 'bottom-left',
               overflowY: 'scroll'
             }}
           >
-            <Component {...pageProps} />
+            <Component {...pageProps}/>
+
           </div>
         </div>
         <style>
