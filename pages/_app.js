@@ -43,7 +43,7 @@ export default class App extends NextApp {
               zIndex: 1,
               height: '100vh',
               width: '100vw',
-              backgroundImage: 'url("https://cdn.discordapp.com/attachments/1010026679202218064/1010441334554902558/Background_-_2bg.png")',
+              backgroundImage: 'url("https://cdn.discordapp.com/attachments/532339327888392192/1010939364269903882/Background_-_2bg_2.png")',
               backgroundSize: 'cover',
               backgroundPosition: 'bottom-left',
               overflowY: 'scroll'
