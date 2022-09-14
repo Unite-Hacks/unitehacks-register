@@ -289,7 +289,6 @@ export default function Register({ notFound, registrationRecord, params }) {
             </Text>{' '}
             their registration website.
             <br></br>
-            Background credits to Sahana 2022
           </Text>
         </Box>
       </Card>
