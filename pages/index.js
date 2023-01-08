@@ -72,7 +72,7 @@ export default function Register({ notFound, registrationRecord, params }) {
                   window.open('https://www.unitehacks.com/', '_blank')
                 }
               >
-                Unite Hacks!
+                Unite Hacks 2.0!
               </Text>
               !
             </Text>
